@@ -21,7 +21,7 @@ const OrdersList = () => {
     //      loadOrders();
 
     useEffect(() => {
-        fetch('https://infinite-hamlet-09689.herokuapp.com/orders')
+        fetch('http://localhost:8888/orders')
             .then(res => res.json())
             .then(data => {
                 console.log(data)

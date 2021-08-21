@@ -15,7 +15,7 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        fetch('https://infinite-hamlet-09689.herokuapp.com/allAdmin?email=' + loggedInUser.email)
+        fetch('http://localhost:8888/allAdmin?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 const mail = { email: data[0] }
@@ -48,9 +48,6 @@ const Dashboard = () => {
                     </div>
 
             }
-
-
-
 
 
 

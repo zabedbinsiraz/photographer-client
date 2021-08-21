@@ -6,7 +6,7 @@ const ManageServices = () => {
     const [services, setServices] = useState([]);
 
     const loadServices= () => {
-        fetch('https://infinite-hamlet-09689.herokuapp.com/services')
+        fetch('http://localhost:8888/services')
             .then(res => res.json())
             .then(data => {
                 setServices(data)
@@ -14,7 +14,7 @@ const ManageServices = () => {
     }
     loadServices();
     const handleDelete = (id) => {
-        fetch(`https://infinite-hamlet-09689.herokuapp.com/deleteService/${id}`, {
+        fetch(`http://localhost:8888/deleteService/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

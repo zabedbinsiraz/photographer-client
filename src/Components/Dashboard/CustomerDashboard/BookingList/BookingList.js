@@ -12,7 +12,7 @@ const BookingList = () => {
 
 
     useEffect(() => {
-        fetch('https://infinite-hamlet-09689.herokuapp.com/allBookings?email=' + loggedInUser.email)
+        fetch('http://localhost:8888/allBookings?email=' + loggedInUser.email)
             .then(res => res.json())
             .then(data => {
                 setOrders(data)

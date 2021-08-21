@@ -14,13 +14,13 @@ const Services = (props) => {
 
 
   useEffect(() => {
-    fetch('https://infinite-hamlet-09689.herokuapp.com/services')
+    fetch('http://localhost:8888/services')
       .then(res => res.json())
       .then(data => {
         console.log(data)
         setServices(data)
       })
-  }, [])
+  }, []);
 
 
 

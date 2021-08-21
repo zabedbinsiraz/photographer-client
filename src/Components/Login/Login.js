@@ -5,6 +5,7 @@ import "firebase/auth";
 import firebaseConfig from '../../firebase.config';
 import { UserContext } from '../../App';
 import { useHistory, useLocation } from 'react-router-dom';
+import { useForm } from "react-hook-form";
 
 
 
@@ -25,7 +26,7 @@ const Login = () => {
 
     const history = useHistory();
     const location = useLocation();
-    let { from } = location.state || { from: { pathname: "/" } } ;
+    let { from } = location.state || { from: { pathname: "/" } };
 
 
 
@@ -72,6 +73,32 @@ const Login = () => {
         });
     }
 
+
+
+
+    const { register, handleSubmit, watch, errors } = useForm();
+    const onSubmit = data => {
+
+        console.log(data.email)
+        const admin = {
+            email: data.email,
+            password:data.password
+        };
+
+
+
+        fetch('http://localhost:8888/addUser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(admin)
+        })
+            .then(res => res.json())
+            .then(data => console.log(data))
+        
+
+    };
     return (
         <div className="container d-flex justify-content-center m-3 p-3">
 
@@ -87,23 +114,52 @@ const Login = () => {
                         <img style={{ height: '50px' }} src={logo} alt="" />
                     </div>
                     <div>
-                        <h4>PLUMBING<br />HERO</h4>
+                        <h4>BasicView<br />Studio</h4>
                     </div>
                 </div>
 
-                <div
-                    className=" text-center">
-                    <button onClick={() => { handleGoogleSignIn() }} className="btn-primary btn ms-5 mt-5" style={{ height: '70px', minWidth: '300px', fontSize: '36px' }}>
-                        {
-                            loggedInUser.email ? 'You Logged In Successfully' : 'Continue With Google'
-                        }
-                    </button>
+                <div>
+                    <form onSubmit={handleSubmit(onSubmit)}>
+                        <div className="form-control">
+                            <div>
+                            <label for="exampleInputEmail1" className="form-label">Email address</label>
+                                <br />
+                                <input className="input" id="exampleInputEmail1" type="email" className="form-control" placeholder="valid email address" {...register('email')} />
+                                <br />
+                                <label for="exampleInputPassword1" className="form-label">Password</label>
+                                <input className="input" id="exampleInputPassword1" type="password" className="form-control" placeholder="password" {...register('password')} />
+
+
+                            </div>
+
+                            
+
+
+                        </div>
+                            <br />
+                            <div className="text-center">
+                                <input className="save-btn btn btn-primary" type="submit" />
+                            </div>
+                    </form>
+                </div>
+                    <div>
+                        OR
+                    </div>
+
+
+                    <div
+                        className=" text-center">
+                        <button onClick={() => { handleGoogleSignIn() }} className="btn-primary btn ms-5 mt-5" style={{ height: '70px', minWidth: '300px', fontSize: '36px' }}>
+                            {
+                                loggedInUser.email ? 'You Logged In Successfully' : 'Continue With Google'
+                            }
+                        </button>
+                    </div>
+
                 </div>
 
             </div>
-
-        </div>
-    );
+            );
 };
 
-export default Login;
+            export default Login;

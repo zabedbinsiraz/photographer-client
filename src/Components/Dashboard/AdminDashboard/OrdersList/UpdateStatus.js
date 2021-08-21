@@ -7,7 +7,7 @@ const UpdateStatus = (props) => {
   // const loadOrders = props.loadOrders;
 
   const handleStatus = (id,data) => {
-    fetch(`https://infinite-hamlet-09689.herokuapp.com/updateOrder/${id}`, {
+    fetch(`http://localhost:8888/updateOrder/${id}`, {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(data)

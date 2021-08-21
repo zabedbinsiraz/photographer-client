@@ -14,7 +14,7 @@ const MakeAdmin = () => {
 
 
 
-        fetch('https://infinite-hamlet-09689.herokuapp.com/addAdmin', {
+        fetch('http://localhost:8888/addAdmin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

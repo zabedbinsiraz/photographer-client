@@ -10,9 +10,10 @@ import Dashboard from './Components/Dashboard/Dashboard/Dashboard';
 import { createContext, useState } from 'react';
 import PrivateRoute from './Components/Home/PrivateRoute/PrivateRoute';
 import Services from './Components/Home/ServiceSection/Services/Services';
-import Projects from './Components/Home/Projects/Projects/Projects';
 import Footer from './Components/Home/FooterSection/Footer/Footer';
 import Navbar from './Components/Home/HeaderSection/Navbar/Navbar';
+import ServiceDetails from './Components/Home/ServiceSection/ServiceDetails/ServiceDetails';
+import Book from './Components/Dashboard/CustomerDashboard/Book/Book';
 
 export const UserContext = createContext();
 
@@ -37,15 +38,19 @@ const App = () => {
           <Route path="/services">
               <Services></Services>
             </Route>
-            <Route path="/projects">
-              <Projects></Projects>
-            </Route>
+            
             <Route path="/contact">
               <Footer></Footer>
             </Route>
           <PrivateRoute path="/dashboard">
             <Dashboard></Dashboard>
           </PrivateRoute>
+          <Route path="/getService/:serviceId">
+            <ServiceDetails></ServiceDetails>
+          </Route>
+          <Route path="/orderService/:id">
+            <Book></Book>
+          </Route>
 
           <Route path="/">
             <Home />

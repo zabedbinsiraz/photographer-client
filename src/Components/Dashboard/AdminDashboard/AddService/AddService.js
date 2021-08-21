@@ -19,7 +19,7 @@ const AddService = () => {
             price: data.price
         }
         console.log(serviceData)
-        const url = `https://infinite-hamlet-09689.herokuapp.com/addService`;
+        const url = `http://localhost:8888/addService`;
         fetch(url, {
             method: 'POST',
             headers: {
